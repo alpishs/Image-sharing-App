@@ -1,0 +1,36 @@
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style= "height: 490px">
+	<h1><%= image_tag "/cube.jpeg", :alt => 'image', width: "100", height: "80"%> DESIGNED FOR CREATIVES</h1>
+	<hr class="style-eight">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="1.jpg" data-color="lightblue" alt="First Image">
+      <div class="carousel-caption d-none d-md-block">
+      </div>
+    </div>
+    <% AlbumPhoto.last(25).each do |image| %>
+	    <div class="carousel-item">
+	    	<div class="text-center text-capitalize">Uploaded by: <%= image.try(:album).try(:user).try(:username) %></div><br>
+		  	<%= image_tag image.avatar.url, :alt => 'image', width: "100%", height: "330"%>
+	    </div>
+    <% end %>
+
+    <!-- more slides -->
+  </div>
+
+</div>
+<hr class="style-eight">
+
+<script type="text/javascript">
+	$('.carousel').carousel({
+		  interval: 2000,
+		  pause: "false"
+	});
+</script>

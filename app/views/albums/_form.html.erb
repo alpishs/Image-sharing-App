@@ -1,0 +1,39 @@
+<%= form_for(@album, :html => { :multipart => true }) do |f| %>
+	<div class="field">
+			<%= f.label :album_name %>
+			<%= f.text_field :name , required: true, class: "form-control"%>
+			<hr class="style-eight">
+	</div>
+
+ 	<%= f.fields_for :album_photos do |p| %>
+ 		<%= p.file_field :avatar, :multiple => true, name: "album_photos[avatar][]", required: !p.object.id.present? , accept:'image/*', class: "form-control-file" %>
+	 	<div class="field">
+		 	<% if p.object.id.present? %>
+			 	<%= p.label :photo_name %>: <%= p.text_field :photo_name , class: "form-control"%><br> 
+			 	<%= image_tag p.object.avatar.url, :alt => 'image', size: "200x200", class: "img-fluid rounded-circle" %><br>
+			 	<%= p.label :tag_line %>: <%= p.text_field :tag_line , class: "form-control"%><br>
+			 	<%= p.label :created_at %>: <%= p.object.created_at.strftime("%B %d, %Y")%><br>
+			 	<%= p.label :owner_name %>: <%= p.object.album.user.username %><br>
+			 	<%= p.label :owner_email %>: <%= p.object.album.user.email %><br>
+			<%end%>
+		 	<hr class="style-eight" >
+	 	</div>
+ 	<% end %>
+
+	<div class="actions btn">
+		<%= f.submit  class: 'btn btn-primary'  %>
+	</div>
+<% end %>
+
+<script type="text/javascript">
+	$(document).ready(function(){
+		$( "form" ).submit(function( event ) {
+			var $fileUpload = $("input[type='file']");
+        if (parseInt($fileUpload.get(0).files.length)>25){
+         alert("You can only upload a maximum of 25 files");
+         return false;
+        }
+
+		});
+   })
+</script>

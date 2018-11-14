@@ -1,0 +1,11 @@
+<div class="container border border-dark">
+	<h1>Album: <%= @album.name %></h1>
+	<hr>
+	<%= render 'form', album: @album %><br>
+	<%= link_to 'Show', @album , class: 'btn btn-primary'%>
+	<%= link_to 'Back', albums_path , class: 'btn btn-primary'%>
+<div>
+
+<script type="text/javascript">
+	$("input[type='file']").hide();
+</script>

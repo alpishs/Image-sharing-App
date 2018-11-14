@@ -1,0 +1,48 @@
+<div class="table-responsive">
+
+<h1>Owner Albums</h1>
+
+<p>Type something in the input field to search the table for first names, last names or emails:</p>  
+<input class="form-control" id="myInput" type="text" placeholder="Search..">
+<br>
+<table class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Album Name</th>
+      <th>Album Created Date</th>
+      <th>Album Owner Name</th>
+      <th>Album Owner Email</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody id = "myTable">
+    <% @albums.each do |album| %>
+      <tr>
+        <td><%= album.name %></td>
+        <td><%= album.created_at.strftime("%B %d, %Y") %></td>
+        <td><%= album.user.username %></td>
+        <td><%= album.user.email %></td>
+        <td><%= link_to 'Show', album , class: 'btn btn-primary'%></td>
+        <td><%= link_to 'Edit', edit_album_path(album) , class: 'btn btn-primary'%></td>
+        <td><%= link_to 'Destroy', album, method: :delete, data: { confirm: 'Are you sure?' } , class: 'btn btn-primary'%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Album', new_album_path , class: 'btn btn-primary'%>
+<div>
+
+<script>
+  $(document).ready(function(){
+    $("#myInput").on("keyup", function() {
+      var value = $(this).val().toLowerCase();
+      $("#myTable tr").filter(function() {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+      });
+    });
+  });
+</script>

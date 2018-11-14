@@ -1,0 +1,40 @@
+<h1><%= 'Update Your Details' %></h1>
+<hr class="style-eight">
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+	<div class="form-group">
+		<%= f.label :username %>
+		<%= f.text_field :username, autofocus: true, autocomplete: 'username', class: 'form-control' %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :email %>
+		<%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'form-control' %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :password %>
+		<%= f.password_field :password, autocomplete: 'new-password', class: 'form-control' %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :password_confirmation %>
+		<%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'form-control'  %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :current_password %>
+		<%= f.password_field :current_password, autocomplete: 'current-password', class: 'form-control' %>
+		<big class="form-text text-muted"><%= 'we need your current password to confirm your changes' %></big>
+
+	</div>
+
+	<div class="form-group">
+		<%= f.submit 'update', class: 'btn btn-primary' %>
+	</div>
+<% end %>
+
+<p><%= 'unhappy' %>? <%= link_to 'cancel my account', registration_path(resource_name), data: { confirm: 'Are you sure? Do you want to cancel your account' }, method: :delete %>.</p>
+<%= link_to 'back', :back , class: 'btn btn-primary' %>
+

@@ -1,0 +1,22 @@
+<p>
+  <strong>Album:</strong>
+  <%= @album_photo.album_id %>
+</p>
+
+<p>
+  <strong>Avatar:</strong>
+  <%= @album_photo.avatar %>
+</p>
+
+<p>
+  <strong>Photo name:</strong>
+  <%= @album_photo.photo_name %>
+</p>
+
+<p>
+  <strong>Tag line:</strong>
+  <%= @album_photo.tag_line %>
+</p>
+
+<%= link_to 'Edit', edit_album_photo_path(@album_photo) , class: 'btn btn-primary'%>
+<%= link_to 'Back', album_photos_path, class: 'btn btn-primary' %>

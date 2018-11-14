@@ -1,0 +1,17 @@
+<div class="container border border-dark">	
+	<h1>Album: <%= @album.name %></h1>
+	<hr class="style-eight">
+	<p>
+	  <% @album.album_photos.each do |image| %>
+			Photo Name: <%= image.photo_name %><br> 
+			Tag Line: <%= image.tag_line %><br>
+			Created at: <%= image.created_at.strftime("%B %d, %Y")%><br>
+			Owner name: <%= image.album.user.username %><br>
+			Owner email: <%= image.album.user.email %><br>
+			<%= image_tag image.avatar.url, :alt => 'image', size: "200x200" , class: "img-fluid rounded-circle" %><br>
+			<hr class="style-eight">
+	  <% end %>
+	</p>
+	<%= link_to 'Edit', edit_album_path(@album), class: 'btn btn-primary' %> 
+	<%= link_to 'Back', albums_path , class: 'btn btn-primary'%>
+<div>
