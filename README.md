@@ -1,24 +1,26 @@
-# README
+# Image Sharing Application
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version: 2.4.1
 
-* System dependencies
+* Rails version: Rails 5.2.1
 
-* Configuration
+* System dependencies: No
 
-* Database creation
+* clone project
 
-* Database initialization
+* bundle install
 
-* How to run the test suite
+* rake db:create
 
-* Services (job queues, cache servers, search engines, etc.)
+* rake db:migrate
 
-* Deployment instructions
+* rails s
 
-* ...
+* Please hit url: http://localhost:3000/
+
+* Please hit url: http://localhost:3000/users/sign_up (for sign up new user)
