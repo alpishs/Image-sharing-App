@@ -12,6 +12,8 @@
 			<hr class="style-eight">
 	  <% end %>
 	</p>
-	<%= link_to 'Edit', edit_album_path(@album), class: 'btn btn-primary' %> 
+	<% if current_user.present? %>		
+		<%= link_to 'Edit', edit_album_path(@album), class: 'btn btn-primary' %>
+	<% end %> 
 	<%= link_to 'Back', albums_path , class: 'btn btn-primary'%>
 <div>

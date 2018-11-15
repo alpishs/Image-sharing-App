@@ -4,7 +4,8 @@ class AlbumsController < ApplicationController
   # GET /albums
   # GET /albums.json
   def index
-    @albums = Album.where(user_id: current_user.id)
+    @albums_for_visitors = Album.all
+    @albums = Album.where(user_id: current_user.try(:id))
   end
 
   # GET /albums/1
